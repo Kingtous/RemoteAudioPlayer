@@ -5,27 +5,25 @@ import os
 isDebug = True
 
 # Functions
-def message(text):
-    if isDebug:
-        print(text)
-
 def init_audio():
-    message('Initializing Audio Player.')
+    conf.message('Initializing Audio Player.')
     import pyaudio as Player
     conf.audio_player = Player.PyAudio()
 
 def init_audio_converter():
-    message('Initializing Audio Converter.')
+    conf.message('Initializing Audio Converter.')
     import ffmpeg,pydub
     conf.ffmpeg_engine = ffmpeg
     conf.pydub = pydub
 
 def init_bluetooth():
-    message('Initializing Bluetooth Adapter.')
+    conf.message('Initializing Bluetooth Adapter.')
+    import bluetooth
+    conf.bluetooth_device = bluetooth
     # macOS TODO
 
 def init_tmp_folder():
-    message('Initializing tmp folder.')
+    conf.message('Initializing tmp folder.')
     if not os.path.exists(conf.tmp_path):
         os.mkdir(conf.tmp_path)
 
@@ -38,4 +36,6 @@ def init():
 
 
 if __name__ == '__main__':
+    os.system('espeak "Initializing system."')
     init()
+    
