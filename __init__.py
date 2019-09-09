@@ -1,6 +1,8 @@
 # 初始化配置
 import config as conf
 import os
+# bluetooth module
+import blue
 # Settings
 isDebug = True
 
@@ -35,7 +37,12 @@ def init():
     # TODO Threading
 
 
+
 if __name__ == '__main__':
-    os.system('espeak "Initializing system."')
     init()
+    # bluetooth module
+    bluetooth_server = blue.ConnectionServer()
+    # running threads
+    bluetooth_server.start()
+    
     

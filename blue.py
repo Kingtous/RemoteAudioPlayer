@@ -80,7 +80,7 @@ class AudioPlayer(threading.Thread):
     def run(self):
         tools.playAudio(self.path)
 
-class bluetoothConnect(threading.Thread):
+class ConnectionServer(threading.Thread):
     def __init__(self):
         super().__init__()
 

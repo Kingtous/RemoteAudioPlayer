@@ -37,6 +37,7 @@ def playAudio(path):
         output = True
     )
     try:
+        print('Start Playing.')
         conf.isPlaying = True
         data = wf.readframes(conf.chunk)
         while data != b'':
