@@ -16,10 +16,10 @@ def startBT():
             bluetooth.advertise_service(server_sock,"Audio Player",service_id=uuid)
             conf.message('Waiting for connection')
             # TODO 加段音频，等待连接
-            # os.system('espeak "wating for connection."')
+            os.system('espeak "wating for connection." --stdout | aplay')
             client_sock,client_info = server_sock.accept()
             # TODO 加段音频，连接成功
-            # os.system('espeak "connection success."')
+            os.system('espeak "connection success." --stdout | aplay')
             data = None
             tmp_file_path = conf.tmp_path+'/'+'tmp.mp3'
             if not conf.isPlaying:
@@ -44,6 +44,8 @@ def startBT():
                                 tools.tts('music stopped')
                                 conf.Stopped = True
                             break
+                    except json.decoder.JSONDecodeError:
+                        pass
                     except UnicodeDecodeError:
                         pass
                     except AttributeError:

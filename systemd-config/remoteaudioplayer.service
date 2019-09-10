@@ -1,0 +1,10 @@
+[Unit]
+Description=Remote Audio Player For Linux Distribution
+
+[Service]
+Type=simple
+ExecStart=sudo /bin/bash your.path.to.run.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
