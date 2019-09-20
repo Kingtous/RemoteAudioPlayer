@@ -7,11 +7,13 @@ testAudio = 'ori.mp3'
 def xxx2wav(path):
     if os.path.isfile(path) and conf.ffmpeg_engine != None and conf.pydub!=None:
         (basepath,filename,ext)=split_path(path)
-        if ext == '.wav':
-            return True
+        #if ext == '.wav':
+        #    return True
         try:
-            sound = conf.pydub.AudioSegment.from_mp3(path)
-            sound.export(path,format = 'wav')
+            rename_path=basepath+'/'+filename+'/'+'.wav'
+            os.system('/usr/bin/ffmpeg -y -i '+path+' -f wav '+rename_path)
+            os.remove(path)
+            os.rename(rename_path,path)
         except:
             # 可以试着播放
             return True

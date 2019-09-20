@@ -8,7 +8,7 @@ pydub = None
 tmp_path = '/tmp/remoteAudio'
 
 # configuration
-chunk = 1024
+chunk = 4096
 Interrupted = False
 Stopped = False
 isVerbose = True
