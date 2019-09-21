@@ -8,11 +8,13 @@ Play Audio on your Linux devices using your phone.
   - pyaudio
   - pybluez
   - ffmpeg
-  - pydub
+- Linux Packages
+  - libasoundr
 
 **What you need to do**
 
 - Download the [Release](https://github.com/Kingtous/RemoteAudioPlayer-Android/releases) App.
+- Enter `bin` folder, run `build.sh` to compile sound adjustment binary executable file.
 - Running `__init__.py` on your remote devices.
   - Linux Required
 - Tip

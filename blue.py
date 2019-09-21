@@ -43,6 +43,10 @@ def startBT():
                             elif action_str == 'stop':
                                 tools.tts('music stopped')
                                 conf.Stopped = True
+                            elif action_str == 'vol_up':
+                                conf.VOL_UP = True
+                            elif action_str == 'vol_down':
+                                conf.VOL_DOWN = True
                             break
                     except json.decoder.JSONDecodeError:
                         pass

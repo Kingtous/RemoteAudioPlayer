@@ -13,8 +13,25 @@ Interrupted = False
 Stopped = False
 isVerbose = True
 
+# arg
+import os,sys
+vctool = os.path.split(sys.argv[0])[0]+'/bin/vc '
+
+
+def increaseVolume():
+    os.system(vctool+' -i')
+
+def decreaseVolume():
+    os.system(vctool+' -d')
+
+
+
 # status
 isPlaying = False
+
+# temper option
+VOL_UP = False
+VOL_DOWN = False
 
 
 def message(text):

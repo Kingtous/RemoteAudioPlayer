@@ -1,5 +1,5 @@
 import config as conf
-import os,time,wave
+import os,time,wave,sys
 import __init__ as initializer
 
 testAudio = 'ori.mp3'
@@ -10,7 +10,7 @@ def xxx2wav(path):
         #if ext == '.wav':
         #    return True
         try:
-            rename_path=basepath+'/'+filename+'/'+'.wav'
+            rename_path=basepath+'/'+filename+'.wav'
             os.system('/usr/bin/ffmpeg -y -i '+path+' -f wav '+rename_path)
             os.remove(path)
             os.rename(rename_path,path)
@@ -48,9 +48,14 @@ def playAudio(path):
             # User interrupted
             while conf.Interrupted :
                 time.sleep(1)
+            # stop playing
             if conf.Stopped :
-                # stop playing
                 break
+            if conf.VOL_UP:
+                conf.increaseVolume()
+            elif conf.VOL_DOWN:
+                conf.decreaseVolume()
+            
     except KeyboardInterrupt:
         pass
     finally:
@@ -61,3 +66,5 @@ def playAudio(path):
 
 def tts(text):
     os.system('espeak "'+text+'"')
+
+
