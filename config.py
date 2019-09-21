@@ -13,19 +13,6 @@ Interrupted = False
 Stopped = False
 isVerbose = True
 
-# arg
-import os,sys
-vctool = os.path.split(sys.argv[0])[0]+'/bin/vc '
-
-
-def increaseVolume():
-    os.system(vctool+' -i')
-
-def decreaseVolume():
-    os.system(vctool+' -d')
-
-
-
 # status
 isPlaying = False
 
@@ -33,16 +20,33 @@ isPlaying = False
 VOL_UP = False
 VOL_DOWN = False
 
+# arg
+import os,sys
+vctool = os.getcwd()+'/bin/vc '
+
+
+def increaseVolume():
+    global VOL_UP
+    os.system(vctool+' -i')
+    VOL_UP = False
+
+def decreaseVolume():
+    global VOL_DOWN
+    os.system(vctool+' -d')
+    VOL_DOWN = False
+
 
 def message(text):
     if isVerbose:
         print(text)
 
 def reset():
-    global Interrupted,Stopped,isPlaying
+    global Interrupted,Stopped,isPlaying,VOL_DOWN,VOL_UP
     Interrupted = False
     Stopped = False
     isPlaying = False
+    VOL_UP = False
+    VOL_DOWN = False
 
 """
 命令：
